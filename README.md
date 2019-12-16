@@ -74,11 +74,11 @@ tables viz. "users" table, "songs" table, and "playlists" table, wherein each ta
 We could use the "users" table to store all the registered users, wherein each user is associated to a unique `user_id`. Similarly, we could have a table to 
 store all the songs indexed by a unique `song_id`. 
 This way, we would be able to independently scale the resources around storing "users" and "songs" in the system based on their respective cardinalities. A frontend query service could be designed that exposes APIs to lookup entries by `user_id` and `song_id` fields.
-The query service could be a lightweight request routing layer, which queries a metadata layer based by a coordination framework like ZooKeeper, to get the data placement information viz. nodes/shards housing the `ids` requested in the query.
-This metadata layer would be updated as part of datastore updates/inserts. Similarly, we could have a global `playlists` table to store all the unique playlists in the systems and reference an array of playlists in the "users" table to keep track 
+The query service could be a lightweight request routing layer, which queries a metadata layer (e.g. Apache Helix) backed by a coordination framework like ZooKeeper, to get the data placement information viz. nodes/shards housing the `ids` requested in the query.
+This metadata layer would be updated as part of datastore updates/inserts. Similarly, we could have a global `playlists` table to store all the unique playlists in the systems and reference an array of playlists in the `users` table to keep track 
  of all the playlists created by the given user. Updates to these tables could be applied by exposing REST APIs in the query service.
  The query service can be scaled horizontally based on the expected update/query rates. Updates could be channelized into the query service using a queue service like Kafka to 
- streamline the processing pipeline for the incoming updates from users. 
+ streamline the processing pipeline for the incoming updates from the users. 
  
   
  
