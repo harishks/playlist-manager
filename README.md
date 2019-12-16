@@ -26,16 +26,17 @@ The application uses the user supplied "input.json" file to build a global view 
 
    `PlaylistChangeMgr` class uses the following data-structures to improve runtime efficiency 
     while applying the changes to the input:
-    1. Hash table to facilitate O(1) lookups while removing Playlists for a given user, and adding a new song to an existing playlist
-    2. Set to keep track of all the exiting users by `user_id` - used to validate users while 
+    
+   1. Hash table to facilitate O(1) lookups while removing Playlists for a given user, and adding a new song to an existing playlist
+   2. Set to keep track of all the exiting users by `user_id` - used to validate users while 
     adding a new playlist
-    3. Set to keep track of all the existing songs in the system - used to verify the existence of a song while appending a song to the playlist
+   3. Set to keep track of all the existing songs in the system - used to verify the existence of a song while appending a song to the playlist
 
 ### **Structure of "changes.json" file**
 
-   The change file is modeled to be extensible for any kind of add, append, (or) remove operations on the input mixtape.
-     For the current use-case, we have an option to add a new playlists with existing songs, append a new song to an existing
-     playlist, and remove a playlist for an existing user. Any of the change operation can be represented as an array, (i.e.)
+   The change file is modeled to be extensible for any kind of add, append, or remove operations on the input mixtape.
+     For the use-case in hand, we have an option to add new playlists with existing songs, append a new song to an existing
+     playlist, and remove a playlist for an existing user. Any of these change operations can be represented as an array, (i.e.)
      multiple changes for any given operation can be bundled together to be applied in a serial fashion. Note that, the serial execution
      model is used in the current design to keep the implementation simple. For eg., a remove operation consists of an array of "pids" (playlist ids), which could span across multiple users.
      
