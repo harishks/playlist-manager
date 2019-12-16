@@ -63,7 +63,7 @@ The application uses the user supplied "input.json" file to build a global view 
  
  ### **Dependencies** 
  
-    The application uses Jackson data processing API to serialize/deserialize JSON strings.
+   The application uses Jackson data processing API to serialize/deserialize JSON strings.
     
 
 # Scaling Considerations
