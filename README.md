@@ -28,7 +28,7 @@ The application uses the user supplied "input.json" file to build a global view 
     while applying the changes to the input:
     
    1. Hash table to facilitate O(1) lookups while removing Playlists for a given user, and adding a new song to an existing playlist
-   2. Set to keep track of all the exiting users by `user_id` - used to validate users while 
+   2. Set to keep track of all the existing users by `user_id` - used to validate users while 
     adding a new playlist
    3. Set to keep track of all the existing songs in the system - used to verify the existence of a song while appending a song to the playlist
 

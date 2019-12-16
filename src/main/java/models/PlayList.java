@@ -2,7 +2,7 @@ package models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by hshankar on 12/12/19.
@@ -12,7 +12,7 @@ public class PlayList {
     @JsonProperty("user_id")
     private String uid;
     @JsonProperty("song_ids")
-    private ArrayList<String> sids;
+    private HashSet<String> sids;
 
     public String getId() {
         return id;
@@ -30,11 +30,11 @@ public class PlayList {
         this.uid = uid;
     }
 
-    public ArrayList<String> getSids() {
+    public HashSet<String> getSids() {
         return sids;
     }
 
-    public void setSids(ArrayList<String> sids) {
+    public void setSids(HashSet<String> sids) {
         this.sids = sids;
     }
 }
